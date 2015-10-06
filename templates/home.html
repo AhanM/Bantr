@@ -1,0 +1,40 @@
+<template name="home">
+
+    <div class="container">
+		<div class="text-center">
+			<h1 id="intro-header"><strong>Introducing Bantr</strong></h1>
+			<p class="lead">Rant about sports here!<br>Start <strong>Bantr</strong>ing below, and have fun!</p>
+		</div>
+	</div>
+
+    <div>
+            <form class="new-post">
+                <input type="text" name="user" placeholder="Username "/>
+                <br>
+                <input type="text" name="text" placeholder="Type to Post Something" />
+                <br>
+                <button>Submit</button>
+            </form>
+
+        <ul class="posts">
+            {{#each posts}}
+            {{> Post}}
+            {{/each}}
+        </ul>
+    </div>
+</template>
+
+<template name="Post">
+	<hr/>
+	<li style="font-size: 15px">
+		<strong>{{user}}</strong> : {{text}}
+		<button class="upvote"><span class=" glyphicon glyphicon-menu-up" aria-hidden="true"></span></button>
+		<button class="downvote"><span class=" glyphicon glyphicon-menu-down" aria-hidden="true"></span></button>
+		<br>
+		Points = {{points}}
+		<br>
+		<span style="font-size: 11px">Posted at {{createdAt}}</span>
+	</li>
+	<hr/>
+	<br>
+</template>
