@@ -1,39 +1,42 @@
 <template name="home">
-
     <div class="container">
-		<div class="text-center">
-			<h1 id="intro-header"><strong>Introducing Bantr</strong></h1>
-			<p class="lead">Rant about sports here!<br>Start <strong>Bantr</strong>ing below, and have fun!</p>
-		</div>
-	</div>
+    <center class="page-header">
+		<h1><strong>Introducing Bantr</strong></h1>
+		<h4>Rant about sports here!<br>Start <strong>Bantr</strong>ing below, and have fun!</h4>
+    <br>
+    <form class="new-post">
+        <div class="form-group">
+        <label for="inputUsername">Username</label>
+        <input type="text" name="user" placeholder=""/>
+        </div>
+        <div class="form-group">
+        <label for="inputUsername">Write Here</label>
+        <input type="text" name="text" placeholder=""/>
+        </div>
+        <button class="btn btn-primary">Submit</button>
+    </form>
 
-    <div>
-            <form class="new-post">
-                <input type="text" name="user" placeholder="Username "/>
-                <br>
-                <input type="text" name="text" placeholder="Type to Post Something" />
-                <br>
-                <button>Submit</button>
-            </form>
-
-        <ul class="posts">
-            {{#each posts}}
-            {{> Post}}
-            {{/each}}
-        </ul>
+    <ul class="posts list-group">
+        {{#each posts}}
+        {{> Post}}
+        {{/each}}
+    </ul>
+    </center>
     </div>
 </template>
 
 <template name="Post">
-	<hr/>
-	<li style="font-size: 15px">
-		<strong>{{user}}</strong> : {{text}}
-		<button class="upvote"><span class=" glyphicon glyphicon-menu-up" aria-hidden="true"></span></button>
-		<button class="downvote"><span class=" glyphicon glyphicon-menu-down" aria-hidden="true"></span></button>
+    <div class="container">
+    <hr/>
+	<li class="list-group-item list-group-item-info" style="font-size: 15px">
+		<strong>{{user}}</strong>: {{text}}
+		<button class="upvote" style="float: right; color: #00ff00"><span class=" glyphicon glyphicon-menu-up" aria-hidden="true"></span></button>
+		<button class="downvote" style="float: right; color: #ff0000"><span class=" glyphicon glyphicon-menu-down" aria-hidden="true"></span></button>
+		<div style="float: left"><strong>{{points}}</strong></div>
 		<br>
-		Points = {{points}}
-		<br>
+        <br>
 		<span style="font-size: 11px">Posted at {{createdAt}}</span>
 	</li>
 	<br>
+    </div>
 </template>
