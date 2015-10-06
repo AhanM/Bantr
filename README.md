@@ -1,4 +1,5 @@
 # Bantr
-Make sure you've added these packages to your meteor app:
- - accounts-password
- - iron:router
+To setup on localhost follow these steps:
+ - clone repo
+ - cd to repo
+ - run meteor app
