@@ -3,9 +3,19 @@ Posts = new Mongo.Collection("posts");
 // - 'acccounts-password'
 // - 'iron:router'
 
-Router.route('/',{
-    template: 'home',
+
+Router.route('/', function () {
+    this.render('home');
+},{
     name: 'home'
+});
+
+Router.route('/about', function () {
+    this.render('about');
+});
+
+Router.route('/contact', function () {
+    this.render('contact')
 });
 
 if (Meteor.isClient) {
