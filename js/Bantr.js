@@ -42,8 +42,9 @@ if (Meteor.isClient) {
                 text: text,
                 username: Meteor.user().username || Meteor.user().profile.name,
                 points: 0,
-                // current time
-                time: new Date(),
+                votedUp : false,
+                votedDown : false,
+                time: new Date(), // current time
                 createdAt : (new Date().toLocaleTimeString())+
                 " "+(new Date().toLocaleDateString())
                 });
@@ -55,18 +56,41 @@ if (Meteor.isClient) {
         "click .upvote" : function(event) {
             event.preventDefault();
 
-            Posts.update(this._id,
-            {$set: {points : this.points+10}}
-            );
+            if(!this.votedUp && Meteor.user() != null){
+                Posts.update(this._id,
+                {$set: {points : this.points+10}}
+                );
+            }
 
+            if(this.votedUp == false){
+                Posts.update(this._id,
+                {$set: {votedUp : true}}
+                );
+
+                Posts.update(this._id,
+                {$set: {votedDown : false}}
+                );
+            }
         },
 
         "click .downvote" : function(event) {
             event.preventDefault();
 
-            Posts.update(this._id,
-                {$set: {points: this.points-10}}
-            );
+            if(!this.votedDown && Meteor.user() != null) {
+                Posts.update(this._id,
+                    {$set: {points: this.points-10}}
+                );
+            }
+
+            if(this.votedDown == false){
+                Posts.update(this._id,
+                {$set: {votedDown : true}}
+                );
+
+                Posts.update(this._id,
+                {$set: {votedUp : false}}
+                );
+            }
         }
     });
 }
