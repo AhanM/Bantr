@@ -1,19 +1,5 @@
 <template name="login">
-    <form>
-        <input type="email" name="loginEmail" placeholder="Email Address"/>
-        <br>
-        <input type="password" name="loginPassword" placeholder="Password"/>
-        <br>
-        <input type="submit" value="Login">
-    </form>
-</template>
-
-<template name="register">
-    <form>
-        <input type="email" name="registerEmail" placeholder="Email Address"/>
-        <br>
-        <input type="password" name="registerPassword" placeholder="Password"/>
-        <br>
-        <input type="submit" value="Register">
-    </form>
+    <div class="container">
+        {{> loginButtons}}
+    </div>
 </template>

@@ -1,5 +1,4 @@
 Router.route('/login');
-Router.route('/register');
 
 if(Meteor.isClient) {
     Template.register.events({
@@ -26,13 +25,11 @@ if(Meteor.isClient) {
             var pass = event.target.loginPassword.value;
 
             Meteor.loginWithPassword(email,pass);
-        }
+        },
     });
 
-    // Template.dashboard.events({
-    //     "click .logout": function(event) {
-    //         event.defaultPrevented = true;
-    //         Meteor.logout();
-    //     }
-    // });
+    Accounts.ui.config({
+        passwordSignupFields: "USERNAME_ONLY"
+    });
+
 }

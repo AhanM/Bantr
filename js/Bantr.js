@@ -2,7 +2,8 @@ Posts = new Mongo.Collection("posts");
 // Make sure you've added these packages to your meteor app:
 // - 'acccounts-password'
 // - 'iron:router'
-
+// - 'accounts-facebook'
+// - 'accounts-ui-unstyled'
 
 Router.route('/', function () {
     this.render('home');
@@ -34,13 +35,12 @@ if (Meteor.isClient) {
             event.preventDefault();
             // Get value from form element
             var text = event.target.text.value;
-            var user = event.target.user.value;
 
             if(text!= ""){
             // Insert a task into the collection
             Posts.insert({
                 text: text,
-                user: user,
+                username: Meteor.user().username || Meteor.user().profile.name,
                 points: 0,
                 // current time
                 time: new Date(),

@@ -4,17 +4,19 @@
 		<h1><strong>Introducing Bantr</strong></h1>
 		<h4>Rant about sports here!<br>Start <strong>Bantr</strong>ing below, and have fun!</h4>
     <br>
-    <form class="new-post">
-        <div class="form-group">
-        <label for="inputUsername">Username</label>
-        <input type="text" name="user" placeholder=""/>
-        </div>
-        <div class="form-group">
-        <label for="inputUsername">Write Here</label>
-        <input type="text" name="text" placeholder=""/>
-        </div>
-        <button class="btn btn-primary">Submit</button>
-    </form>
+    {{#if currentUser}}
+        <form class="new-post">
+            <!-- <div class="form-group">
+            <label for="inputUsername">Username</label>
+            <input type="text" name="user" placeholder=""/>
+            </div> -->
+            <div class="form-group">
+            <label for="inputUsername">Write Here</label>
+            <input type="text" name="text" placeholder=""/>
+            </div>
+            <button class="btn btn-primary">Submit</button>
+        </form>
+    {{/if}}
 
     <ul class="posts list-group">
         {{#each posts}}
@@ -29,7 +31,7 @@
     <div class="container">
     <hr/>
 	<li class="list-group-item list-group-item-info" style="font-size: 15px">
-		<strong>{{user}}</strong>: {{text}}
+		<strong>{{username}}</strong>: {{text}}
 		<button class="upvote" style="float: right; color: #00ff00"><span class=" glyphicon glyphicon-menu-up" aria-hidden="true"></span></button>
 		<button class="downvote" style="float: right; color: #ff0000"><span class=" glyphicon glyphicon-menu-down" aria-hidden="true"></span></button>
 		<div style="float: left"><strong>{{points}}</strong></div>
