@@ -1,5 +1,10 @@
 # Bantr
-To setup on localhost follow these steps:
- - clone repo
- - cd to repo
- - run meteor app
+List of meteor package additions:
+    - 'acccounts-password'
+    - 'iron:router'
+    - 'accounts-facebook'
+    - 'accounts-ui-unstyled'
+
+List of removals:
+    - 'insecure'
+    - 'autopublish'
