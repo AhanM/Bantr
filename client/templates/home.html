@@ -29,9 +29,9 @@
     <hr/>
 	<li class="list-group-item list-group-item-info" style="font-size: 15px">
 		<strong>{{username}}</strong>: {{text}}
-		<button class="upvote" style="float: right; color: #00ff00"><span class=" glyphicon glyphicon-menu-up" aria-hidden="true"></span></button>
-		<button class="downvote" style="float: right; color: #ff0000"><span class=" glyphicon glyphicon-menu-down" aria-hidden="true"></span></button>
-		<div style="float: left"><strong>{{points}}</strong></div>
+		<button class="upvote btn {{upvotedClass}}" style="float: right">⬆</button>
+		<!-- <button class="downvote" style="float: right; color: #ff0000"><span class=" glyphicon glyphicon-menu-down" aria-hidden="true"></span></button> -->
+		<div style="float: left"><strong>Points: {{points}}</strong></div>
 		<br>
         <br>
 		<span style="font-size: 11px">Posted at {{createdAt}}</span>
