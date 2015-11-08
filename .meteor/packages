@@ -21,3 +21,4 @@ iron:router@1.0.0-pre4
 ejson
 accounts-ui-unstyled
 accounts-facebook
+momentjs:moment

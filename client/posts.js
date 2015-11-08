@@ -25,7 +25,7 @@ Template.home.events({
         var text = event.target.text.value;
 
         if(text!= "" && Meteor.user()){
-            // Insert a task into the collection
+            // Insert a post into the collection
             Posts.insert({
                 text: text,
                 username: Meteor.user().username || Meteor.user().profile.name,
@@ -33,8 +33,7 @@ Template.home.events({
                 votedUp : false,
                 upvoters : [],
                 time: new Date(), // current time
-                createdAt : (new Date().toLocaleTimeString())+
-                " "+(new Date().toLocaleDateString())
+                createdAt : moment().format('MMMM Do YYYY, h:mm:ss a')
             });
         }
         // Clear form
@@ -46,5 +45,11 @@ Template.Post.events({
     "click .upvoteable" : function(event) {
         event.preventDefault();
         Meteor.call('upvote', this._id);
+    }
+});
+
+Template.LoginHeader.helpers({
+    UserName: function() {
+        return Meteor.user().profile.name;
     }
 });
