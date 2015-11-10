@@ -1,41 +1,66 @@
 <template name="home">
 
     <div class="container">
-    <center class="page-header">
-		<h1><strong>Introducing Bantr</strong></h1>
-		<h4>Rant about sports here!<br>Start <strong>Bantr</strong>ing below, and have fun!</h4>
-    <br>
-    {{#if currentUser}}
-        <form class="new-post">
-            <div class="form-group">
-            <label for="inputUsername">Write Here</label>
-            <input type="text" name="text" placeholder=""/>
-            </div>
-            <button class="btn btn-primary">Submit</button>
-        </form>
-    {{/if}}
+        <center class="page-header">
+            <h1><strong>Introducing Bantr</strong></h1>
+            <h4>Rant about sports here!<br>Start <strong>Bantr</strong>ing below, and have fun!</h4>
+            <br>
+            {{#if currentUser}}
+            <form class="new-post">
+                <div class="form-group">
+                    <label for="inputUsername">Write Here</label>
+                    <input type="text" name="text" placeholder=""/>
+                </div>
+                <button class="btn btn-primary">Submit</button>
+            </form>
+            {{/if}}
 
-    <ul class="posts list-group">
-        {{#each posts}}
-            {{> Post}}
-        {{/each}}
-    </ul>
-    </center>
+            <ul class="posts list-group">
+                {{#each posts}}
+                    {{> Post}}
+                {{/each}}
+            </ul>
+
+            {{>FriendList}}
+        </center>
     </div>
 </template>
 
 <template name="Post">
     <div class="container">
-    <hr/>
-	<li class="list-group-item list-group-item-info" style="font-size: 15px">
-		<strong>{{username}}</strong>: {{text}}
-		<button class="upvote btn {{upvotedClass}}" style="float: right">⬆</button>
-		<!-- <button class="downvote" style="float: right; color: #ff0000"><span class=" glyphicon glyphicon-menu-down" aria-hidden="true"></span></button> -->
-		<div style="float: left"><strong>Points: {{points}}</strong></div>
-		<br>
+        <hr/>
+        <li class="list-group-item list-group-item-info" style="font-size: 15px">
+            <strong>{{username}}</strong>: {{text}}
+            <button class="upvote btn {{upvotedClass}}" style="float: right">⬆</button>
+            <!-- <button class="downvote" style="float: right; color: #ff0000"><span class=" glyphicon glyphicon-menu-down" aria-hidden="true"></span></button> -->
+            <div style="float: left"><strong>Points: {{points}}</strong></div>
+            <br>
+            <br>
+            <span style="font-size: 11px">Posted at {{createdAt}}</span>
+            <br>
+            <span>COMMENTS</span>
+            <ul class="comments">
+                {{#each comments}}
+                    {{> Comment}}
+                {{/each}}
+            </ul>
+        </li>
         <br>
-		<span style="font-size: 11px">Posted at {{createdAt}}</span>
-	</li>
-	<br>
+
+
     </div>
+</template>
+
+<template name="Comment">
+    <li>
+        <h4>
+            <span class="author">{{author}}</span>
+        </h4>
+        <p>{{body}}</p>
+        <span class="date">on {{submitted}}</span>
+    </li>
+</template>
+
+<template name="FriendList">
+    {{friendlist}}
 </template>

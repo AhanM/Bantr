@@ -1,4 +1,5 @@
 Posts = new Meteor.Collection("posts");
+Comments = new Meteor.Collection("comments");
 
 Template.home.helpers({
     posts: function () {
@@ -14,6 +15,9 @@ Template.Post.helpers({
         } else {
             return 'disabled';
         }
+    },
+    comments: function(){
+        return Comments.find({postId:this._id},{sort:{time:-1}});
     }
 });
 
@@ -32,7 +36,6 @@ Template.home.events({
                 points: 0,
                 votedUp : false,
                 upvoters : [],
-                time: new Date(), // current time
                 createdAt : moment().format('MMMM Do YYYY, h:mm:ss a')
             });
         }
@@ -51,5 +54,11 @@ Template.Post.events({
 Template.LoginHeader.helpers({
     UserName: function() {
         return Meteor.user().profile.name;
+    }
+});
+
+Template.FriendList.helpers({
+    friendlist: function() {
+        Meteor.call("getFriendsData");
     }
 });
