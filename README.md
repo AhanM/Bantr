@@ -4,6 +4,7 @@ List of meteor package additions:
  - 'iron:router'
  - 'accounts-facebook'
  - 'accounts-ui-unstyled'
+ - 'moment.js'
 
 List of removals:
  - 'insecure'
