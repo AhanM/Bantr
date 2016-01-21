@@ -3,7 +3,7 @@ Comments = new Meteor.Collection("comments");
 
 Template.home.helpers({
     posts: function () {
-        return Posts.find({},{sort:{time:-1}});
+        return Posts.find({},{sort:{time:+1}});
     }
 });
 
