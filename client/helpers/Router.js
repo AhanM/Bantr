@@ -15,3 +15,7 @@ Router.route('/about', function () {
 Router.route('/contact', function () {
     this.render('contact')
 });
+
+Router.route('/friends', function() {
+    this.render('friends')
+});

@@ -5,6 +5,7 @@ List of meteor package additions:
  - 'accounts-facebook'
  - 'accounts-ui-unstyled'
  - 'moment.js'
+ - 'meteorhacks:npm'
 
 List of removals:
  - 'insecure'

@@ -56,9 +56,3 @@ Template.LoginHeader.helpers({
         return Meteor.user().profile.name;
     }
 });
-
-Template.FriendList.helpers({
-    friendlist: function() {
-        Meteor.call("getFriendsData");
-    }
-});
