@@ -28,7 +28,7 @@ if(Meteor.isServer) {
         return this.query('me');
     }
     Facebook.prototype.getFriendsData = function() {
-        return this.query('/me/friendlists');
+        return this.query('/me/friends');
     }
 
     Meteor.methods({
@@ -61,7 +61,7 @@ if(Meteor.isServer) {
 
     Meteor.publish('posts', function() {
         // Show newest posts at the top
-        return Posts.find({},{sort:{time:-1}});
+        return Posts.find({},{sort:{time:+1}});
     });
     Meteor.publish('comments',function(){
         return Comments.find({});
@@ -88,13 +88,13 @@ if(Meteor.isServer) {
     if(Comments.find().count()==0) {
         Comments.insert({
             // userId: Meteor.user()._id,
-            postId: Posts.findOne()._id,
+            // postId: Posts.findOne()._id,
             // author: Meteor.user().profile.name,
             submitted: moment().format('MMMM Do YYYY, h:mm:ss a'),
             body: 'Interesting project Sacha, can I get involved?'
         });
         Comments.insert({
-            postId: Posts.findOne()._id,
+            // postId: Posts.findOne()._id,
             // userId: Meteor.user()._id,
             // author: Meteor.user().profile.name,
             submitted: moment().format('MMMM Do YYYY, h:mm:ss a'),

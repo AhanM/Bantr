@@ -11,13 +11,15 @@ Template.login.events({
 });
 
 Template.login.onCreated(function() {
-    Meteor.call("getFriendsData", function(error, userData) {
-        if(error) {
-            console.log(error)
-        } else {
-            Session.set('userData', userData)
-        }
-    });
+    if(Meteor.user() != null) {
+        Meteor.call("getUserData", function(error, userData) {
+            if(error) {
+                console.log(error)
+            } else {
+                Session.set('userData', userData)
+            }
+        });
+    }
 });
 
 Template.login.helpers({
@@ -27,23 +29,33 @@ Template.login.helpers({
     gender: function(){
         return JSON.stringify(Meteor.user().services.facebook.gender).toLocaleUpperCase();
     },
-    userData: function(){
-        return Session.get("userData")
-    }
+    // userData: function(){
+    //     return Session.get("userData")
+    // }
 });
 
 Template.friends.onCreated(function() {
-    Meteor.call("getFriendsData", function(error, friends) {
-        if (error) {
-            console.log(error);
-        } else {
-            Session.set('friends', friends);
-        }
-    });
+    if(Meteor.user() != null) {
+        Meteor.call("getFriendsData", function(error, friends) {
+            if (error) {
+                console.log(error);
+            } else {
+                Session.set('friends', friends);
+            }
+        });
+    }
 });
 
 Template.friends.helpers({
    friendlist: function() {
-       return Session.get('friends');
+       friendList = Session.get('friends').data;
+       friend = [];
+
+       for (i = 0; i < friendList.length; i++)
+       {
+            friend.push(friendList[0].name);
+       };
+
+       return friend.toString();
    }
 });
