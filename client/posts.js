@@ -3,7 +3,7 @@ Comments = new Meteor.Collection("comments");
 
 Template.home.helpers({
     posts: function () {
-        return Posts.find({},{sort:{time:+1}});
+        return Posts.find({}, {sort: {time: -1}});
     }
 });
 
@@ -39,7 +39,8 @@ Template.home.events({
                 points: 0,
                 votedUp : false,
                 upvoters : [],
-                createdAt : moment().format('MMMM Do YYYY, h:mm:ss a')
+                createdAt : moment().format('MMMM Do YYYY, h:mm:ss a'),
+                time : new Date().getTime()
             });
         }
         // Clear form
@@ -64,7 +65,8 @@ Template.Post.events({
                 postId: this._id,
                 userId: Meteor.user()._id,
                 author: Meteor.user().profile.name,
-                submitted: moment().format('MMMM Do YYYY, h:mm:ss a')
+                submitted: moment().format('MMMM Do YYYY, h:mm:ss a'),
+                time: new Date().getTime()
             });
         }
 
