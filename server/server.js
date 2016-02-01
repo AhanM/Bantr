@@ -85,18 +85,24 @@ if(Meteor.isServer) {
         }
     });
 
+    Comments.allow({
+        'insert' : function(userId, doc) {
+            return !! userId;
+        }
+    })
+
     if(Comments.find().count()==0) {
         Comments.insert({
-            // userId: Meteor.user()._id,
-            // postId: Posts.findOne()._id,
-            // author: Meteor.user().profile.name,
+            userId: Meteor.user()._id,
+            postId: Posts.findOne()._id,
+            author: Meteor.user().profile.name,
             submitted: moment().format('MMMM Do YYYY, h:mm:ss a'),
             body: 'Interesting project Sacha, can I get involved?'
         });
         Comments.insert({
-            // postId: Posts.findOne()._id,
-            // userId: Meteor.user()._id,
-            // author: Meteor.user().profile.name,
+            postId: Posts.findOne()._id,
+            userId: Meteor.user()._id,
+            author: Meteor.user().profile.name,
             submitted: moment().format('MMMM Do YYYY, h:mm:ss a'),
             body: 'You sure can Tom!'
         });

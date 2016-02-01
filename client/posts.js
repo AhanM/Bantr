@@ -18,11 +18,14 @@ Template.Post.helpers({
     },
     comments: function(){
         return Comments.find({postId:this._id},{sort:{time:-1}});
+    },
+    commentsCount: function() {
+        return Comments.find({postId:this._id}).count();
     }
 });
 
 Template.home.events({
-    "submit form": function (event) {
+    "submit .new-post": function (event) {
         // Prevent default browser form submit
         event.preventDefault();
         // Get value from form element
@@ -48,6 +51,24 @@ Template.Post.events({
     "click .upvoteable" : function(event) {
         event.preventDefault();
         Meteor.call('upvote', this._id);
+    },
+
+    "submit .insertComment": function (event) {
+        event.preventDefault();
+
+        var text = event.target.text.value;
+
+        if(text!= "" && Meteor.user()) {
+            Comments.insert({
+                body: text,
+                postId: this._id,
+                userId: Meteor.user()._id,
+                author: Meteor.user().profile.name,
+                submitted: moment().format('MMMM Do YYYY, h:mm:ss a')
+            });
+        }
+
+        event.target.text.value = "";
     }
 });
 

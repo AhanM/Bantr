@@ -33,12 +33,23 @@
             <button class="upvote btn {{upvotedClass}}" style="float: right">⬆</button>
             <!-- <button class="downvote" style="float: right; color: #ff0000"><span class=" glyphicon glyphicon-menu-down" aria-hidden="true"></span></button> -->
             <div style="float: left"><strong>Points: {{points}}</strong></div>
-            <br>
-            <br>
+            <br><br>
+
             <span style="font-size: 11px">Posted at {{createdAt}}</span>
+            <br><br>
+
+            <!-- <span><h3>Comments</h3></span> -->
+            <button class="btn btn-primary" type="button">
+              Comments <span class="badge">{{commentsCount}}</span>
+            </button>
+
+            <br><br>
+
+            <form class="insertComment">
+                <input type="text" name="text" style="font-size:10px;width:150px" placeholder="Write your comment here"/>
+            </form>
             <br>
-            <span>COMMENTS</span>
-            <ul class="comments">
+            <ul class="list-group comments">
                 {{#each comments}}
                     {{> Comment}}
                 {{/each}}
@@ -49,11 +60,11 @@
 </template>
 
 <template name="Comment">
-    <li>
-        <h4>
-            <span class="author">{{author}}</span>
-        </h4>
-        <p>{{body}}</p>
-        <span class="date">on {{submitted}}</span>
+    <li class="list-group-item">
+        <div>
+            <a class="author">{{author}}:</a><div class="content">{{body}}</div>
+        </div>
+
+        <div class="date">on {{submitted}}</div>
     </li>
 </template>

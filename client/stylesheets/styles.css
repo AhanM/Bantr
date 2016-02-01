@@ -1,6 +1,16 @@
 #intro-header {
     font-size: 90;
 }
+.comments .author{
+    font-size: 14px;
+    font-style: bold;
+}
+.comments .content {
+    font-size: 14px;
+}
+.comments .date{
+    font-size: 10px;
+}
 .navbar-default {
   background-color: #388db8;
   border-color: #027a98;
