@@ -1,6 +1,5 @@
 <template name="home">
-
-    <div class="container">
+    <div class="container" style="max-width: 970px">
         <center class="page-header">
             <h1><strong>Introducing Bantr</strong></h1>
             <h4>Rant about sports here!<br>Start <strong>Bantr</strong>ing below, and have fun!</h4>
@@ -8,8 +7,7 @@
             {{#if currentUser}}
             <form class="new-post">
                 <div class="form-group">
-                    <label for="inputUsername">Write Here</label>
-                    <input type="text" name="text" placeholder=""/>
+                    <input type="text" name="text" class="form-control input-lg" rows="2" placeholder="Write a bantr..."/>
                 </div>
                 <button class="btn btn-primary">Submit</button>
             </form>
@@ -26,43 +24,42 @@
 </template>
 
 <template name="Post">
-    <div class="container">
-        <hr/>
-        <li class="list-group-item list-group-item-info" style="font-size: 15px">
-            <strong>{{username}}</strong>: {{text}}
-            <button class="upvote btn {{upvotedClass}}" style="float: right">⬆</button>
-            <!-- <button class="downvote" style="float: right; color: #ff0000"><span class=" glyphicon glyphicon-menu-down" aria-hidden="true"></span></button> -->
-            <div style="float: left"><strong>Points: {{points}}</strong></div>
-            <br><br>
+    <hr/>
+    <li class="list-group-item list-group-item-info" style="font-size: 15px">
+        <strong>{{username}}</strong> {{text}}
+        <button class="upvote btn {{upvotedClass}}" style="float: right">⬆</button>
+        <!-- <button class="downvote" style="float: right; color: #ff0000"><span class=" glyphicon glyphicon-menu-down" aria-hidden="true"></span></button> -->
+        <div style="float: left"><strong>Points: {{points}}</strong></div>
+        <br><br>
 
-            <span style="font-size: 11px">Posted at {{createdAt}}</span>
-            <br><br>
+        <span style="font-size: 11px">Posted at {{createdAt}}</span>
+        <br><br>
 
-            <!-- <span><h3>Comments</h3></span> -->
-            <button class="btn btn-primary" type="button">
-              Comments <span class="badge">{{commentsCount}}</span>
-            </button>
+        <!-- <span><h3>Comments</h3></span> -->
+        <button class="btn btn-primary" type="button">
+          Comments <span class="badge"> {{commentsCount}}</span>
+        </button>
 
-            <br><br>
-
-            <form class="insertComment">
-                <input type="text" name="text" style="font-size:10px;width:150px" placeholder="Write your comment here"/>
-            </form>
-            <br>
-            <ul class="list-group comments">
-                {{#each comments}}
-                    {{> Comment}}
-                {{/each}}
-            </ul>
-        </li>
-        <br>
-    </div>
+        <br><br>
+        <form class="insertComment">
+            <div class="form-group">
+                <input type="text" name="text" class="form-control col-xs-12" style="width=100%" placeholder="Write a comment..."/>
+            </div>
+        </form>
+        <br><br>
+        <ul class="list-group comments">
+            {{#each comments}}
+                {{> Comment}}
+            {{/each}}
+        </ul>
+    </li>
+    <br>
 </template>
 
 <template name="Comment">
     <li class="list-group-item">
         <div>
-            <a class="author">{{author}}:</a><div class="content">{{body}}</div>
+            <a class="author">{{author}}</a><div class="content">{{body}}</div>
         </div>
 
         <div class="date">on {{submitted}}</div>
