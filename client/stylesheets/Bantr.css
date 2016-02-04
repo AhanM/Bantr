@@ -78,3 +78,31 @@
     background-color: #027a98;
   }
 }
+
+.panel-container {
+    margin-left: 18%;
+    margin-right: 5%;
+    width:60%; /*60%*/ 
+}
+.panel-container .panel-body .mypanelbody{
+    height:100%;
+}
+.panel-container span {
+    float: right;
+    margin-right: 2%;
+}
+.panel-container .list-group {
+    width: 97%;
+    margin-left: 3%;
+
+}
+.panel-container .list-group-item {
+    width: 99%;
+}
+.panel-container #indent {
+    height:100%;
+}
+.comment {
+    width:40%;  /*60%*/
+}
+

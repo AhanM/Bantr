@@ -1,9 +1,9 @@
-#intro-header {
-    font-size: 90;
+.page-header {
+    font-size: 120;
 }
 .comments .author{
     font-size: 14px;
-    font-style: bold;
+    font-weight: bold;
 }
 .comments .content {
     font-size: 14px;
