@@ -7,9 +7,12 @@
             {{#if currentUser}}
             <form class="new-post">
                 <div class="form-group">
-                    <input type="text" name="text" class="form-control input-lg" rows="2" placeholder="Write a bantr..."/>
+                    <!-- <input type="text" name="text" class="form-control input-lg" rows="2" placeholder="Write a bantr..."/> -->
+                    <textarea class="form-control" name="text" placeholder="Write a bantr..." rows="2"></textarea>
+                    <br>
+                    <button class="btn btn-primary">Submit</button>
+
                 </div>
-                <button class="btn btn-primary">Submit</button>
             </form>
             {{/if}}
 
@@ -26,19 +29,28 @@
 <template name="Post">
     <hr/>
     <li class="list-group-item list-group-item-info" style="font-size: 15px">
-        <strong>{{username}}</strong> {{text}}
-        <button class="upvote btn {{upvotedClass}}" style="float: right">⬆</button>
+        <h4 style="float:left"><strong>{{username}}</strong></h4>
+        <br>
+        <p class="post-content">{{text}}</p>
+
         <!-- <button class="downvote" style="float: right; color: #ff0000"><span class=" glyphicon glyphicon-menu-down" aria-hidden="true"></span></button> -->
-        <div style="float: left"><strong>Points: {{points}}</strong></div>
+
         <br><br>
 
-        <span style="font-size: 11px">Posted at {{createdAt}}</span>
-        <br><br>
+
+        <!-- <br><br> -->
 
         <!-- <span><h3>Comments</h3></span> -->
-        <button class="btn btn-primary" type="button">
+        <!-- <div style="float: left"><strong>Points: {{points}}</strong></div> -->
+        <button class="upvote btn {{upvotedClass}}" id="upvote-btn"> Upvote <span class="badge">{{points}}</span></button>
+
+        <!-- <button class="upvote btn {{upvotedClass}}" style="float:left;margin-left:12%">⬆</button> -->
+        <button class="btn btn-primary comment-btn" type="button">
           Comments <span class="badge"> {{commentsCount}}</span>
         </button>
+
+        <span class="post-date">Posted at {{createdAt}}</span>
+
 
         <br><br>
         <form class="insertComment">
@@ -58,10 +70,11 @@
 
 <template name="Comment">
     <li class="list-group-item">
-        <div>
-            <a class="author">{{author}}</a><div class="content">{{body}}</div>
+        <div style="float:left">
+            <a class="author">{{author}} :</a> {{body}}
         </div>
-
-        <div class="date">on {{submitted}}</div>
+        <br>
+        <div class="date" style="float:right">Commented at {{submitted}}</div>
+        <br>
     </li>
 </template>

@@ -78,11 +78,30 @@
     background-color: #027a98;
   }
 }
-
+.post-content {
+    text-align:left;
+    /*text-indent: 25px;*/
+    margin-left: 4%;
+    margin-right: 3%;
+    margin-top: 2%;
+}
+#upvote-btn {
+    float:left;
+    margin-left:10%;
+}
+.btn .btn-primary .comment-btn {
+    margin-left: 10%
+}
+.post-date {
+    font-size: 11px;
+    float:right;
+    margin-right:4%;
+    margin-top:1%;
+}
 .panel-container {
     margin-left: 18%;
     margin-right: 5%;
-    width:60%; /*60%*/ 
+    width:60%; /*60%*/
 }
 .panel-container .panel-body .mypanelbody{
     height:100%;
@@ -103,6 +122,5 @@
     height:100%;
 }
 .comment {
-    width:40%;  /*60%*/
+    width:40%;
 }
-
