@@ -64,7 +64,7 @@ Template.Post.events({
                 body: text,
                 postId: this._id,
                 userId: Meteor.user()._id,
-                author: Meteor.user().profile.name,
+                author: Meteor.user().username || Meteor.user().profile.name,
                 submitted: moment().format('MMMM Do YYYY, h:mm:ss a'),
                 time: new Date().getTime()
             });

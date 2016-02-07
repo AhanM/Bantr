@@ -98,10 +98,10 @@
     margin-right:4%;
     margin-top:1%;
 }
-.panel-container {
+/*.panel-container {
     margin-left: 18%;
     margin-right: 5%;
-    width:60%; /*60%*/
+    width:60%;
 }
 .panel-container .panel-body .mypanelbody{
     height:100%;
@@ -123,4 +123,12 @@
 }
 .comment {
     width:40%;
+}*/
+.comment-author {
+    float: left;
+}
+.comment-body {
+    text-align: left;
+    margin-left: 1%;
+    text-indent: 4px;
 }

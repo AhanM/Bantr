@@ -35,7 +35,7 @@
 
         <!-- <button class="downvote" style="float: right; color: #ff0000"><span class=" glyphicon glyphicon-menu-down" aria-hidden="true"></span></button> -->
 
-        <br><br>
+        <br>
 
 
         <!-- <br><br> -->
@@ -70,10 +70,11 @@
 
 <template name="Comment">
     <li class="list-group-item">
-        <div style="float:left">
-            <a class="author">{{author}}:</a> {{body}}
+        <div>
+            <a class="comment-author"><strong>{{author}}:</strong> </a> <p class="comment-body"> {{body}}</p>
+
         </div>
-        <br>
+
         <div class="date" style="float:right">Commented at {{submitted}}</div>
         <br>
     </li>
