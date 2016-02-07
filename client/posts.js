@@ -21,6 +21,19 @@ Template.Post.helpers({
     },
     commentsCount: function() {
         return Comments.find({postId:this._id}).count();
+    },
+    isUpvoted: function () {
+
+        upvoters = this.upvoters;
+        userId = Meteor.userId();
+
+        if(userId && _.include(upvoters, userId)) {
+            return 'Upvoted';
+        }
+        else {
+            return 'Upvote';
+        }
+
     }
 });
 
