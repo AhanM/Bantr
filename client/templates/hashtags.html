@@ -1,7 +1,7 @@
 <template name="hashtags">
     <form class="new-topic">
         <div class="">
-            <input type="text" list="suggestions" name="text" class="form-control input" rows="1" placeholder="Search for Hashtags" autocomplete="off"/>
+            <input type="text" id="hashtagSearch" list="suggestions" name="text" class="form-control input" rows="1" placeholder="Search for Hashtags" autocomplete="off"/>
             <datalist id="suggestions">
                 {{#each hashtagsList}}
                     {{> Option}}

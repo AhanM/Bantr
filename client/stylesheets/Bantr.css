@@ -88,6 +88,7 @@
 #upvote-btn {
     float:left;
     margin-left:10%;
+    cursor: inherit;
 }
 .btn .btn-primary .comment-btn {
     margin-left: 10%
@@ -98,32 +99,6 @@
     margin-right:4%;
     margin-top:1%;
 }
-/*.panel-container {
-    margin-left: 18%;
-    margin-right: 5%;
-    width:60%;
-}
-.panel-container .panel-body .mypanelbody{
-    height:100%;
-}
-.panel-container span {
-    float: right;
-    margin-right: 2%;
-}
-.panel-container .list-group {
-    width: 97%;
-    margin-left: 3%;
-
-}
-.panel-container .list-group-item {
-    width: 99%;
-}
-.panel-container #indent {
-    height:100%;
-}
-.comment {
-    width:40%;
-}*/
 .comment-author {
     float: left;
 }
@@ -131,4 +106,8 @@
     text-align: left;
     margin-left: 1%;
     text-indent: 4px;
+}
+.new-topic {
+    width:20%;
+    margin-left: 40%;
 }

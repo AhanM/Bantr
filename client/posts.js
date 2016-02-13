@@ -146,11 +146,3 @@ Template.Topic.helpers({
         return Posts.find({hashtags: this.hashtag}).count();
     }
 });
-
-$('#tokenfield').tokenfield({
-  autocomplete: {
-    source: ['red','blue','green','yellow','violet','brown','purple','black','white'],
-    delay: 100
-  },
-  showAutocompleteOnFocus: true
-})
