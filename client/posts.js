@@ -1,5 +1,6 @@
 Posts = new Meteor.Collection("posts");
 Comments = new Meteor.Collection("comments");
+HashtagCollection = new Meteor.Collection("hashtagCollection");
 
 Template.home.helpers({
     posts: function () {
@@ -44,10 +45,42 @@ Template.home.events({
         // Get value from form element
         var text = event.target.text.value;
 
+        var hashtagArray = [];
+        // aquiring hashtags from text
+        for(var i=0; i < text.length; i++) {
+
+            if(text.charAt(i) == '#') {
+                 for(var j = i+1; j < text.length; j++) {
+
+                     if(text.charAt(j) == ' ') {
+                           hashtagArray.push(text.slice(i+1,j));
+                           console.log(text.slice(i+1,j));
+                           i = j;
+                           break;
+                     }
+                 }
+            }
+        }
+
+        // add hashtags to the HashtagCollection if they arent already there
+        for(var i = 0; i < hashtagArray.length; i++) {
+            if(HashtagCollection.find({hashtag: hashtagArray[i]}).count() == 0)
+            {
+                HashtagCollection.insert({
+                    hashtag: hashtagArray[i],
+                    relevantPosts: 1
+                });
+            }
+            else {
+                Meteor.call('incRelevantPosts', hashtagArray[i]);
+            }
+        }
+
         if(text!= "" && Meteor.user()){
             // Insert a post into the collection
             Posts.insert({
                 text: text,
+                hashtags : hashtagArray,
                 username: Meteor.user().username || Meteor.user().profile.name,
                 points: 0,
                 votedUp : false,
@@ -92,3 +125,32 @@ Template.LoginHeader.helpers({
         return Meteor.user().profile.name;
     }
 });
+
+Template.hashtags.helpers({
+    hashtagsList: function() {
+        return HashtagCollection.find({}, {sort: {relevantPosts: -1}});
+    }
+});
+
+Template.Option.helpers({
+    hashtag: function() {
+        return this.hashtag;
+    }
+});
+
+Template.Topic.helpers({
+    hashtag: function() {
+        return this.hashtag;
+    },
+    postCount: function() {
+        return Posts.find({hashtags: this.hashtag}).count();
+    }
+});
+
+$('#tokenfield').tokenfield({
+  autocomplete: {
+    source: ['red','blue','green','yellow','violet','brown','purple','black','white'],
+    delay: 100
+  },
+  showAutocompleteOnFocus: true
+})

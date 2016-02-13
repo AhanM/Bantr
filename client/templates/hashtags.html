@@ -1,0 +1,34 @@
+<template name="hashtags">
+    <form class="new-topic">
+        <div class="">
+            <input type="text" list="suggestions" name="text" class="form-control input" rows="1" placeholder="Search for Hashtags" autocomplete="off"/>
+            <datalist id="suggestions">
+                {{#each hashtagsList}}
+                    {{> Option}}
+                {{/each}}
+            </datalist>
+        </div>
+    </form>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+
+    <ul class="list-group">
+    {{#each hashtagsList}}
+        {{> Topic}}
+    {{/each}}
+    </ul>
+
+</template>
+
+<template name="Option">
+    <option value="#{{hashtag}}"></option>
+</template>
+
+<template name="Topic">
+    <li class="list-group-item" style="width:40%; margin-left:15%">
+        <a href="#">#{{hashtag}}</a>
+        <span class="badge">{{postCount}}</span>
+    </li>
+</template>

@@ -19,3 +19,7 @@ Router.route('/contact', function () {
 Router.route('/friends', function() {
     this.render('friends')
 });
+
+Router.route('/hashtags', function() {
+    this.render('hashtags')
+});
