@@ -6,7 +6,8 @@ List of meteor package additions:
  - 'accounts-ui-unstyled'
  - 'moment.js'
  - 'meteorhacks:npm'
-
+ - 'meteorhacks:search-source'
+ - 'check'
 List of removals:
  - 'insecure'
  - 'autopublish'
