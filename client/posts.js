@@ -125,24 +125,3 @@ Template.LoginHeader.helpers({
         return Meteor.user().profile.name;
     }
 });
-
-Template.hashtags.helpers({
-    hashtagsList: function() {
-        return HashtagCollection.find({}, {sort: {relevantPosts: -1}});
-    }
-});
-
-Template.Option.helpers({
-    hashtag: function() {
-        return this.hashtag;
-    }
-});
-
-Template.Topic.helpers({
-    hashtag: function() {
-        return this.hashtag;
-    },
-    postCount: function() {
-        return Posts.find({hashtags: this.hashtag}).count();
-    }
-});

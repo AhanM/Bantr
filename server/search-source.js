@@ -1,9 +1,6 @@
 SearchSource.defineSource('hashtags', function(searchText, options) {
-    var options = {sort: {isoScore: -1}, limit: 20};
-
-    console.log("the search text is :-");
-    console.log(searchText);
-
+    var options = {sort: {relevantPosts: -1}, limit: 20};
+    
     if(searchText) {
         var regExp = buildRegExp(searchText);
         var selector = {hashtag: regExp};

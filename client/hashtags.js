@@ -1,3 +1,9 @@
+Template.hashtags.helpers({
+    hashtagsList: function() {
+        return HashtagCollection.find({}, {sort: {relevantPosts: -1}});
+    }
+});
+
 var options = {
     keepHistory: 1000 * 60 * 5,
     localSearch: true
@@ -7,13 +13,17 @@ var fields  = ['hashtag'];
 
 HashtagSearch = new SearchSource('hashtags', fields, options);
 
+Template.hashtags.onCreated(function() {
+    HashtagSearch.search('');
+});
+
 Template.hashtags.helpers({
     getHashtags: function() {
         return HashtagSearch.getData({
             transform: function(matchText, regExp) {
                 return matchText.replace(regExp, "<b>$&</b>")
             },
-            sort: {isoScore: -1}
+            sort: {relevantPosts: -1}
         });
     },
 
