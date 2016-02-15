@@ -23,3 +23,18 @@ Router.route('/friends', function() {
 Router.route('/hashtags', function() {
     this.render('hashtags')
 });
+
+Router.route('/hashtags/:hashtag', function() {
+    var self = this;
+
+    Template.Topic.helpers({
+        RelevantPosts: function() {
+            return Posts.find({hashtags: self.params.hashtag},{sort: {points: -1}});
+        },
+        hashtag: function() {
+            return self.params.hashtag;
+        }
+    });
+
+    this.render('Topic');
+});

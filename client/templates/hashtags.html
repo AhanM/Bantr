@@ -1,6 +1,6 @@
 <template name="hashtags">
     <form class="new-topic">
-        <div class="">            
+        <div class="">
             <input type="text" id="search-box" class="form-control input" rows="1" placeholder="Search for Hashtags">
         </div>
     </form>
@@ -17,7 +17,7 @@
     <ul class="list-group">
     {{#each getHashtags}}
         <li class="list-group-item" style="width:40%; margin-left:15%">
-            <a href="#">#{{{hashtag}}}</a>
+            <a href="/hashtags/{{hashtag}}">#{{{hashtag}}}</a>
             <span class="badge">{{relevantPosts}}</span>
         </li>
     {{/each}}
@@ -25,6 +25,15 @@
 
 </template>
 
-<template name="Option">
-    <option value="#{{hashtag}}"></option>
+<template name="Topic">
+    <div class="container" style="max-width: 800px">
+        <center class="page-header">
+            <h2><strong>#{{hashtag}}</strong></h2>
+            <ul class="posts list-group">
+                {{#each RelevantPosts}}
+                    {{> Post}}
+                {{/each}}
+            </ul>
+        </center>
+    </div>
 </template>
