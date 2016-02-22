@@ -8,6 +8,7 @@ List of meteor package additions:
  - 'meteorhacks:npm'
  - 'meteorhacks:search-source'
  - 'check'
+ 
 List of removals:
  - 'insecure'
  - 'autopublish'
