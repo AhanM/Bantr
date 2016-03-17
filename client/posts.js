@@ -68,6 +68,7 @@ Template.home.events({
             {
                 HashtagCollection.insert({
                     hashtag: hashtagArray[i],
+                    text: '#'+hashtagArray[i],
                     relevantPosts: 1
                 });
             }

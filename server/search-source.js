@@ -3,7 +3,7 @@ SearchSource.defineSource('hashtags', function(searchText, options) {
     
     if(searchText) {
         var regExp = buildRegExp(searchText);
-        var selector = {hashtag: regExp};
+        var selector = {text: regExp};
         return HashtagCollection.find(selector, options).fetch();
     } else {
         return HashtagCollection.find({}, options).fetch();

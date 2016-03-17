@@ -9,7 +9,7 @@ var options = {
     localSearch: true
 };
 
-var fields  = ['hashtag'];
+var fields  = ['text'];
 
 HashtagSearch = new SearchSource('hashtags', fields, options);
 

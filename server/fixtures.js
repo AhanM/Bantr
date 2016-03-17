@@ -3,16 +3,19 @@ HashtagCollection = new Meteor.Collection("hashtagCollection");
 if(HashtagCollection.find().count() == 0) {
     HashtagCollection.insert({
         hashtag: "MUvsMC",
+        text: "#MUvsMC",
         relevantPosts: 0
     });
 
     HashtagCollection.insert({
         hashtag: "FedvsNadal",
+        text: "#FedvsNadal",
         relevantPosts: 0
     });
 
     HashtagCollection.insert({
         hashtag: "TestHashtag",
+        text: "#TestHashtag",
         relevantPosts: 0
     });
 }
