@@ -18,7 +18,7 @@ Template.Post.helpers({
         }
     },
     comments: function(){
-        return Comments.find({postId:this._id},{sort:{time:-1}});
+        return Comments.find({postId:this._id},{sort:{time:1}});
     },
     commentsCount: function() {
         return Comments.find({postId:this._id}).count();
