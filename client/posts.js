@@ -47,13 +47,17 @@ Template.home.events({
 
         var hashtagArray = [];
         // aquiring hashtags from text
-        for(var i=0; i < text.length; i++) {
+        for(var i=0; i < text.length - 1; i++) {
             if(text.charAt(i) == '#') {
                  for(var j = i+1; j < text.length; j++) {
-                     if(text.charAt(j) == ' ' || text.indexOf(text.substring(j, j+1)) == text.length - 1) {
+                     if(text.charAt(j) == ' ') {
                            hashtagArray.push(text.slice(i+1,j));
                            console.log(text.slice(i+1,j));
                            i = j;
+                           break;
+                     } else if(j == text.length - 1) {
+                           hashtagArray.push(text.slice(i+1,j+1));
+                           console.log(text.slice(i+1,j+1));
                            break;
                      }
                  }
